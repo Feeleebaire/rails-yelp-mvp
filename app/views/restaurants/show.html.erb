@@ -1,0 +1,26 @@
+<h1>Le restaurant <%= @restaurant.name %></h1>
+<p>Address: <%=@restaurant.address%></p>
+<p>Phone Number <%= @restaurant.phone_number%>
+<p>Catégorie <%=@restaurant.category%></p>
+
+<%= link_to 'modifier ce restaurant', edit_restaurant_path(@restaurant) %>
+
+<br>
+
+<%= link_to 'retourner à la liste', restaurants_path %>
+<br>
+
+<%= link_to 'Supprimer ce restaurant', restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure" } %>
+
+<br>
+
+<%= link_to 'Donner un avis', new_restaurant_review_path(@restaurant) %>
+
+<h2>Commentaires sur ce restaurant:</h2>
+
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+  <li><%= review.content%> - <%= review.rating %></li>
+  <%end%>
+</ul>
+
